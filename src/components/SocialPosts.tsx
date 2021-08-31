@@ -29,19 +29,32 @@ export default function SocialPosts() {
 		let copiedPosts = [...posts];
 		copiedPosts.unshift({ title: title, thought: thought });
 		setPosts(copiedPosts);
+		// let's clear out the inputs
+		setTitle("");
+		setThought("");
 	}
 
 	return (
 		<div className="SocialPosts">
 			<h1>My Thoughts</h1>
-
-			<button
-				onClick={() => {
-					setFormIsVisible(true);
-				}}
-			>
-				New Thought
-			</button>
+			<div className="buttonContainer">
+				<button
+					id="newThought"
+					onClick={() => {
+						setFormIsVisible(true);
+					}}
+				>
+					New Thought
+				</button>
+			</div>
+			{formIsVisible && (
+				<div
+					className="overlay"
+					onClick={() => {
+						setFormIsVisible(false);
+					}}
+				></div>
+			)}
 			{formIsVisible && (
 				<PostForm
 					onSubmit={() => {
@@ -54,15 +67,17 @@ export default function SocialPosts() {
 					}}
 				/>
 			)}
-			{posts.map((post, index) => (
-				<PostInList
-					key={index}
-					post={post}
-					onDelete={() => {
-						deletePost(index);
-					}}
-				/>
-			))}
+			<div className="postInListContainer">
+				{posts.map((post, index) => (
+					<PostInList
+						key={index}
+						post={post}
+						onDelete={() => {
+							deletePost(index);
+						}}
+					/>
+				))}
+			</div>
 		</div>
 	);
 }

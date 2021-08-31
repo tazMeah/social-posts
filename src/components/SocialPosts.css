@@ -1,3 +1,44 @@
+.SocialPosts {
+	max-width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
 h1 {
 	font-family: "Homemade Apple", cursive;
+	text-align: center;
+	color: #03a9f4;
+}
+
+.buttonContainer {
+	display: flex;
+	justify-content: center;
+}
+
+#newThought {
+	width: 100%;
+	padding: 10px;
+	border-radius: 5px;
+	background: #03a9f4;
+	color: #fff;
+	cursor: pointer;
+}
+
+.postInListContainer {
+	border: 2px solid black;
+	border-radius: 5px;
+	margin-top: 15px;
+	padding: 20px 30px;
+}
+
+.overlay {
+	height: 100vh;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	background: rgba(255, 255, 255, 0.8);
+	z-index: 1;
+	top: 0;
+	left: 0;
+	height: 100%;
+	position: fixed;
 }

@@ -11,34 +11,39 @@ export default function PostForm({
 	onSubmit: () => void;
 }) {
 	return (
-		<form
-			className="PostForm"
-			onSubmit={(e) => {
-				e.preventDefault();
-				onSubmit();
-				onClose();
-			}}
-		>
-			<i
-				className="fas fa-times-circle"
-				onClick={() => {
+		<div>
+			<form
+				className="PostForm"
+				onSubmit={(e) => {
+					e.preventDefault();
+					onSubmit();
 					onClose();
 				}}
-			></i>
-			<label>Title</label>
-			<input
-				type="text"
-				onChange={(event) => {
-					setTitle(event.target.value);
-				}}
-			/>
-			<label>Thought</label>
-			<textarea
-				onChange={(event) => {
-					setThought(event.target.value);
-				}}
-			></textarea>
-			<button type="submit">Add Post</button>
-		</form>
+			>
+				<i
+					className="fas fa-times-circle"
+					onClick={() => {
+						onClose();
+					}}
+				></i>
+				<label>Title</label>
+				<input
+					required
+					type="text"
+					onChange={(event) => {
+						setTitle(event.target.value);
+					}}
+				/>
+				<label>Thought</label>
+				<textarea
+					required
+					rows={10}
+					onChange={(event) => {
+						setThought(event.target.value);
+					}}
+				></textarea>
+				<button type="submit">Add Post</button>
+			</form>
+		</div>
 	);
 }
