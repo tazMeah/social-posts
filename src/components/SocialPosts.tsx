@@ -3,6 +3,8 @@ import { useState } from "react";
 import Post from "../models/Post";
 import PostInList from "./PostInList";
 import PostForm from "./PostForm";
+// import clouds from "../clouds.jpg";
+
 export default function SocialPosts() {
 	const [formIsVisible, setFormIsVisible] = useState(false);
 	const [title, setTitle] = useState("");
@@ -49,6 +51,7 @@ export default function SocialPosts() {
 			</div>
 			{formIsVisible && (
 				<div
+					// style={{ backgroundImage: `url(${clouds})` }}
 					className="overlay"
 					onClick={() => {
 						setFormIsVisible(false);
