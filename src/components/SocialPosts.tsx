@@ -7,8 +7,8 @@ import PostForm from "./PostForm";
 
 export default function SocialPosts() {
 	const [formIsVisible, setFormIsVisible] = useState(false);
-	const [title, setTitle] = useState("");
-	const [thought, setThought] = useState("");
+	// const [title, setTitle] = useState("");
+	// const [thought, setThought] = useState("");
 
 	const [posts, setPosts] = useState<Post[]>([
 		{ title: "Grand Circus", thought: "Grand Circus is cool." },
@@ -26,14 +26,11 @@ export default function SocialPosts() {
 		setPosts(copiedPosts);
 	}
 
-	function onSubmit() {
+	function onSubmit({ title, thought }: Post) {
 		// copy then modify
 		let copiedPosts = [...posts];
 		copiedPosts.unshift({ title: title, thought: thought });
 		setPosts(copiedPosts);
-		// let's clear out the inputs
-		setTitle("");
-		setThought("");
 	}
 
 	return (
@@ -60,11 +57,7 @@ export default function SocialPosts() {
 			)}
 			{formIsVisible && (
 				<PostForm
-					onSubmit={() => {
-						onSubmit();
-					}}
-					setTitle={setTitle}
-					setThought={setThought}
+					onSubmit={onSubmit}
 					onClose={() => {
 						setFormIsVisible(false);
 					}}
